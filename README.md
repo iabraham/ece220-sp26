@@ -1,4 +1,4 @@
-# BL2 Git repository (Abraham)
+# BL3 Git repository (Abraham)
 
 Holds collection of snippets & code files to accompany standard lectures. 
 
