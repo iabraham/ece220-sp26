@@ -13,7 +13,7 @@ int main(void) {
   }
   do {
 
-    printf("Choose upper (u/U) or lower (l/L) triangular: ");
+    printf("Choose upper (u/U) or lower (l/L) triangular or exit (e): ");
     scanf(" %c", &choice);
 
     switch (choice) {
@@ -46,6 +46,6 @@ int main(void) {
     default:
       printf("Unrecognized option; enter 'L' or 'l' or 'u' or 'U'.\n");
     }
-  } while (c != 'e');
+  } while (choice != 'e');
   return 0;
 }

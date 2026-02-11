@@ -31,7 +31,7 @@ int main(void) {
   }
   do {
 
-    printf("Choose upper (u/U) or lower (l/L) triangular: ");
+    printf("Choose upper (u/U) or lower (l/L) triangular or exit (e): ");
     scanf(" %c", &choice);
 
     switch (choice) {
