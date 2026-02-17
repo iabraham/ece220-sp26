@@ -3,8 +3,8 @@
 ; To simulate output, use https://wchargin.com/lc3web/                       
 ; ---------------------------------------------------------------------------
 .ORIG x3000
-    LD  R6, USER_STACK
-    ADD R5, R6, #-1
+    LD  R6, USER_STACK    ; initialize stack pointer
+    ADD R5, R6, #-1       ; initialize frame pointer
     JSR main
 
 swap
