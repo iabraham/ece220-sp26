@@ -13,6 +13,7 @@ int main(void) {
 
   printf("\n");
 
+  /* If using binary search; make sure to sort the array first */
   idx = search(arr, len, key);
 
   if (idx >= 0)
