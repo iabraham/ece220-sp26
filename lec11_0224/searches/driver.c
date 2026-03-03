@@ -14,6 +14,7 @@ int main(void) {
   printf("\n");
 
   /* If using binary search; make sure to sort the array first */
+  /* int sarr[] = {9, 11, 13, 17, 40 , 43, 68}; */
   idx = search(arr, len, key);
 
   if (idx >= 0)
