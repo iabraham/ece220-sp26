@@ -19,7 +19,10 @@ unsigned long long fib_iter(int n) {
   long long fnext = 1;
   long long temp;
   do {
-
+    temp = fnext + fnow;
+    fnow = fnext;
+    fnext = temp;
+    n--;
   } while (n > 0);
 
   return fnext;

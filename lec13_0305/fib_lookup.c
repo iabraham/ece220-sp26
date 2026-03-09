@@ -8,11 +8,14 @@ unsigned long long lookup[100];
 unsigned long long fib_lookup(unsigned long long n) {
   if (lookup[n] != -1) {
     /* Item is in array */
+    return lookup[n];
   }
   if (n < 2) {
     /* First two cases are n itself */
+    lookup[n] = n;
   } else {
     /* Compute and populate the value in the lookup table before return */
+    lookup[n] = fib_lookup(n - 1) + fib_lookup(n - 2);
   }
   return lookup[n];
 }

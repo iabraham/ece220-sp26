@@ -60,10 +60,15 @@ void print_maze(char maze[MAZE_HEIGHT][MAZE_WIDTH]) {
 }
 
 int main() {
-  char maze[MAZE_HEIGHT][MAZE_WIDTH];
+  char maze[MAZE_HEIGHT][MAZE_WIDTH] = {
+      {'@', 'X', ' ', ' ', ' ', ' ', 'X'}, {' ', 'X', ' ', ' ', 'X', ' ', ' '},
+      {' ', 'X', ' ', ' ', 'X', 'X', 'X'}, {' ', 'X', ' ', ' ', ' ', ' ', ' '},
+      {' ', 'X', 'X', 'X', 'X', ' ', ' '}, {'X', ' ', ' ', 'E', 'X', ' ', ' '},
+      {'X', 'X', ' ', 'X', 'X', ' ', 'X'}, {' ', ' ', ' ', ' ', ' ', ' ', 'X'},
+  };
 
   print_maze(maze);
-  if (ExitMaze(maze, 1, 3)) {
+  if (ExitMaze(maze, 0, 0)) {
     print_maze(maze);
   } else {
     printf("No path to exit!\n");
