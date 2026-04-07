@@ -32,7 +32,14 @@ void add_at_head(node **cursor, node *new) {
 }
 
 // Function to insert node (Slide 30)
-void insert(node **cursor, node *new) {}
+void insert(node **cursor, node *new) {
+  if ((*cursor == NULL) || (*cursor)->byear >= new->byear) {
+    add_at_head(cursor, new);
+    return;
+  } else {
+    insert(&(*cursor)->next, new);
+  }
+}
 
 node *headptr = NULL;
 
