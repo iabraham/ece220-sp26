@@ -3,7 +3,6 @@
 
 class LinkedList {
 
-protected:
   Person *head;
 
 public:

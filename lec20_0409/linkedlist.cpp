@@ -4,13 +4,24 @@ using namespace std;
 void LinkedList::print_list() {
   Person *cursor = head;
   /* While cursor exists print and update */
+  cout << "Head ->";
+  while (cursor) {
+    cursor->print();
+    cout << "->";
+    cursor = cursor->next;
+  }
+  cout << "NULL" << endl;
 }
 
 void LinkedList::add_at_head(Person p) {
   /* Create copy on heap */
   Person *new_p = new Person(p);
-
-  /* Write code to add to head */
+  if (head == NULL) {
+    head = new_p;
+  } else {
+    new_p->next = head;
+    head = new_p;
+  }
 }
 
 void LinkedList::del_at_head() {
@@ -19,6 +30,9 @@ void LinkedList::del_at_head() {
     return;
   else {
     /* Write code to delete head */
+    Person *temp = head;
+    head = head->next;
+    delete temp;
   }
 }
 
@@ -36,6 +50,7 @@ int main() {
   const char *red_names[] = {"Reagan", "Bush", "Trump", "Nixon"};
   unsigned int red_years[] = {1911, 1946, 1946, 1913};
 
+  /*Create a empty linked list*/
   LinkedList prez_list;
 
   for (int i = 0; i < 4; i++) {

@@ -13,6 +13,6 @@ public:
   }
 
   void print() {
-    std::cout << "(" << this->name << " , " << this->byear << ")" << std::endl;
+    std::cout << "(" << this->name << " , " << this->byear << ")";
   }
 };
