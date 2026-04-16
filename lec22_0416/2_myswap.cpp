@@ -29,6 +29,12 @@ Person::Person(const Person &p) {
 
 /** Add templated myswap code here so that this file compiles **/
 
+template <typename T> void myswap(T &a, T &b) {
+  T temp = a; // Will call copy constructor of T
+  a = b;
+  b = temp;
+}
+
 int main() {
 
   Person p1 = Person("Alex", 1990);

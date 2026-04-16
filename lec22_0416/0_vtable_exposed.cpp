@@ -17,7 +17,7 @@ void inspectVTable(Base *obj) {
 
   // Print first few entries of vtable
   cout << "VTable entries:\n";
-  for (int i = 0; i < 2; ++i) {
+  for (int i = 0; i < 3; ++i) {
     cout << "  [" << i << "] = " << vptr[i] << endl;
   }
 
@@ -28,9 +28,11 @@ void inspectVTable(Base *obj) {
 
   FuncType f0 = (FuncType)vptr[0];
   FuncType f1 = (FuncType)vptr[1];
+  FuncType f2 = (FuncType)vptr[2];
 
   f0(obj);
   f1(obj);
+  f2(obj);
 }
 
 // driver code
