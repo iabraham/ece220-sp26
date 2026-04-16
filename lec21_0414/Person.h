@@ -12,6 +12,12 @@ public:
     this->next = NULL;
   }
 
+  Person(const Person &p) {
+    this->name = p.name;
+    this->byear = p.byear;
+    this->next = NULL;
+  }
+
   void print() {
     std::cout << "(" << this->name << " , " << this->byear << ")" << std::endl;
   }

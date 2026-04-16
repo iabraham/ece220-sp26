@@ -34,7 +34,18 @@ LinkedList::~LinkedList() {
     del_at_head();
 }
 
-class Stack : protected LinkedList {};
+class Stack : protected LinkedList {
+public:
+  void push(Person p) { add_at_head(p); }
+
+  Person pop() {
+    Person temp = *head;
+    del_at_head();
+    return temp;
+  }
+
+  void print_stack() { LinkedList ::print_list(); }
+};
 
 int main() {
   // Define the names and birth years of some presidents
@@ -52,12 +63,11 @@ int main() {
     prez_list.push(p);
   }
 
-  prez_list.print_list();
+  prez_list.print_stack();
   std::cout << "----------------" << std::endl;
-  Person *pp = prez_list.pop();
+  Person pp = prez_list.pop();
   std::cout << "We popped:" << std::endl;
-  pp->print();
+  pp.print();
   std::cout << "----------------" << std::endl;
-  prez_list.print_list();
-  delete pp;
+  prez_list.print_stack();
 }

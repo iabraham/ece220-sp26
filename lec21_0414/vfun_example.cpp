@@ -3,7 +3,7 @@ using namespace std;
 
 class Animal {
 public:
-  virtual void eat() = 0;
+  virtual void eat() { cout << "I'm eating food." << endl; }
 };
 
 class Cat : public Animal {
@@ -22,6 +22,8 @@ int main() {
 
   Dog *bruno = new Dog();
   bruno->eat();
+
+  eat_lunch(bruno);
 
   return 0;
 }

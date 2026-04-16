@@ -3,6 +3,8 @@ using namespace std;
 
 int main() {
   int val = 10;
+  int aint = 40;
+  int *pa = &aint;
   int *ptr = &val; // & to get address
   int &ref = val;  // & to declare reference
 
@@ -15,8 +17,8 @@ int main() {
 
   val = 30;
   cout << "ref = " << ref << endl;
+  ref = *pa;
 
   cout << "ptr = " << ptr << endl;
-  ptr = &ref;
   cout << "ptr = " << ptr << endl;
 }
