@@ -59,7 +59,8 @@ void print_preorder(node *cursor) {
   if (cursor == NULL) {
   }
 
-  /* Visit the root node first */
+  /* Visit the root node first -- cast to (void *) to
+   * prevent warnings from gcc (sometimes) */
   printf("Node %d: (Address: %p,\t Left:%p, \t Right:%p)\n", cursor->data,
          (void *)cursor, (void *)cursor->left, (void *)cursor->right);
 
