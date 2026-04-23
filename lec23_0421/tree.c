@@ -25,12 +25,16 @@ void add_left(node *cursor, int data) {
   /*If left child doesn't exist */
   if (cursor->left == NULL) {
     /* Allocate memory for the new node */
+    node *new_node = (node *)malloc(sizeof(node));
 
     /* Set the data for the new node */
+    new_node->data = data;
 
     /* Initialize left and right children to NULL */
+    new_node->left = new_node->right = NULL;
 
     /* Link the new node as the left child of the cursor */
+    cursor->left = new_node;
   } else {
     /* If left child already exists, do nothing */
     return;
@@ -40,16 +44,21 @@ void add_left(node *cursor, int data) {
 /*  Function to add a right child to a given node */
 void add_right(node *cursor, int data) {
   /*If right child doesn't exist */
-  if () {
+  if (cursor->right == NULL) {
     /* Allocate memory for the new node */
+    node *new_node = (node *)malloc(sizeof(node));
 
     /* Set the data for the new node */
+    new_node->data = data;
 
     /* Initialize left and right children to NULL */
+    new_node->left = new_node->right = NULL;
 
     /* Link the new node as the right child of the cursor */
+    cursor->right = new_node;
   } else {
     /* If right child already exists, do nothing */
+    return;
   }
 }
 
@@ -57,6 +66,7 @@ void add_right(node *cursor, int data) {
 void print_preorder(node *cursor) {
   /* Base case: if the current node is NULL, return */
   if (cursor == NULL) {
+    return;
   }
 
   /* Visit the root node first -- cast to (void *) to
@@ -65,8 +75,10 @@ void print_preorder(node *cursor) {
          (void *)cursor, (void *)cursor->left, (void *)cursor->right);
 
   /* Traverse the left subtree */
+  print_preorder(cursor->left);
 
   /* Traverse the right subtree */
+  print_preorder(cursor->right);
 }
 
 /* Function for Inorder Traversal */
@@ -77,10 +89,15 @@ void print_inorder(node *cursor) {
   }
 
   /* Traverse the left subtree */
+  print_inorder(cursor->left);
 
-  /* Visit the root node */
+  /* Visit the root node first -- cast to (void *) to
+   * prevent warnings from gcc (sometimes) */
+  printf("Node %d: (Address: %p,\t Left:%p, \t Right:%p)\n", cursor->data,
+         (void *)cursor, (void *)cursor->left, (void *)cursor->right);
 
   /* Traverse the right subtree */
+  print_inorder(cursor->right);
 }
 
 /* Function for Postorder Traversal */
@@ -91,23 +108,33 @@ void print_postorder(node *cursor) {
   }
 
   /* Traverse the left subtree */
+  print_postorder(cursor->left);
 
   /* Traverse the right subtree */
+  print_postorder(cursor->right);
 
   /* Visit the root node */
+  printf("Node %d: (Address: %p,\t Left:%p, \t Right:%p)\n", cursor->data,
+         (void *)cursor, (void *)cursor->left, (void *)cursor->right);
 }
 
 /* Function to delete the entire tree */
 void delete_tree(node *cursor) {
   /* Base case: if the current node is NULL, return */
+  if (cursor == NULL) {
+    return;
+  }
 
   /* Recursively delete left and right subtrees */
+  delete_tree(cursor->left);
+  delete_tree(cursor->right);
 
   printf("Deleting Node %d: (Address: %p,\t Left:%p, \t Right:%p)\n",
          cursor->data, (void *)cursor, (void *)cursor->left,
          (void *)cursor->right);
 
-  /* Free the memory allocated for the current node */
+  /* Free the emory allocated for the current node */
+  free(cursor);
 }
 
 /* Function to print the tree in a human-readable format */
@@ -143,13 +170,13 @@ int main(void) {
     add_right(cursor, arr[i + 1]);
     cursor = (j % 2 == 0) ? cursor->right : cursor->left;
   }
-  printf("==================PREORDER=====================\n");
-  print_preorder(root);
+  // printf("==================PREORDER=====================\n");
+  // print_preorder(root);
   // printf("===================INORDER===================\n");
   // print_inorder(root);
-  // printf("=================POSTORDER======================\n");
-  // print_postorder(root);
+  printf("=================POSTORDER======================\n");
+  print_postorder(root);
   printf("==================HUMAN READABLE===============\n");
-  // treeprint(root, 0);
+  treeprint(root, 0);
   delete_tree(root);
 }
