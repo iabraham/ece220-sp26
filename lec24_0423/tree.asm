@@ -13,32 +13,50 @@ RSTACK .FILL x7000
 
 TRAVERSE_INORDER ;; FILL IN ALL THE NECESSARY CODE!!
 ; Bookkeeping
+ADD R6, R6, #-1  ; space for return value
+ADD R6, R6, #-1  ; space for old R7
+STR R7, R6, #0 
 
-
+ADD R6, R6, #-1  ; space for old R5
+STR R5, R6, #0
+ADD R5, R6, #-1  ; set new frame pointer
 
 ;; FUNCTION LOGIC 
-
+LDR R0, R5, #4
 ; if node null skip to "end"
-
+BRz DONE
 
 ; traverse left subtree - recursive
-
-
-
+LDR R1, R0, #1  ; Load left child 
+ADD R6, R6, #-1 ; space for arg 
+STR R1, R6, #0
+JSR TRAVERSE_INORDER;
+ADD R6, R6, #2 
 
 ; output character 
-
-
-
+LDR R0, R5, #4
+LDR R0, R0, #0
+OUT
 
 ; traverse right subtree - recursive 
+LDR R0, R5, #4
+LDR R1, R0, #2  ; Load right child 
+ADD R6, R6, #-1 ; space for arg 
+STR R1, R6, #0
+JSR TRAVERSE_INORDER;
+ADD R6, R6, #2 
 
 
 DONE ; This is the "end"
 ; Callee teardown 
-
-
+;Restore frame pointer 
+LDR R5, R6, #0
+ADD R6, R6, #1 
+;Restore return address
+LDR R7, R6, #0 
+ADD R6, R6, #1 
 RET
+
 .END
 
 .ORIG x6000
