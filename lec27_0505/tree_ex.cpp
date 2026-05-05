@@ -1,6 +1,5 @@
 #include "person.hpp"
 #include "tree_template.hpp"
-#include <iostream>
 
 typedef node<Person> inode;
 
