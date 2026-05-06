@@ -18,15 +18,22 @@ void tree_print(node *cursor, int depth) {
   tree_print(cursor->left, depth + 1);
   tree_print(cursor->right, depth + 1);
 }
-
 bool is_bst(node *cursor, node *&prev) {
+  if (cursor == NULL)
+    return true;
 
-  // FILL IN CODE HERE
+  bool left = is_bst(cursor->left, prev);
 
-  return false;
+  if (prev != NULL && cursor->data <= prev->data)
+    return false;
+
+  prev = cursor;
+  bool right = is_bst(cursor->right, prev);
+
+  return (left && right);
 }
 
 bool is_bst(node *cursor) {
   node *prev = nullptr;
-  return is_bst(cursor);
+  return is_bst(cursor, prev);
 }

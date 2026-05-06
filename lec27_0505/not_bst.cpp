@@ -18,9 +18,8 @@ int main() {
   node *root = new node(1, left, right);
 
   tree_print(root, 0);
-  node *prev = NULL;
 
-  if (is_bst(root, prev))
+  if (is_bst(root))
     cout << "Tree is BST";
   else
     cout << "Tree is not BST";
